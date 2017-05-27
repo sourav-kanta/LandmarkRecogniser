@@ -27,15 +27,13 @@ path='..\Train_data';
 seed = 15
 numpy.random.seed(seed)
 
-if not pydot_ng.find_graphviz():
-    print pydot_ng.find_graphviz()
     
 def process_file(path):
     img=imread(path)
     np_img=numpy.asarray(img).astype('float32')/255.0    
     #print np_img.shape
     return np_img
-
+"""
 def get_images_in_dir(new_path):
     img_list=[]    
     b_name=[]
@@ -47,6 +45,7 @@ def get_images_in_dir(new_path):
             img_list.append(np_img)
             b_name.append(f)
     return (img_list,b_name)
+"""
 
 def get_images():
     img_list=[]    
@@ -99,5 +98,5 @@ if __name__=="__main__":
     
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     print Xtrain.shape
-    model.fit(Xtrain,Ytrain,epochs=10)
+    model.fit(Xtrain,Ytrain,epochs=15)
     model.save("test_model.h5")

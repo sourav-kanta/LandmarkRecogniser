@@ -33,4 +33,5 @@ def resize_dir_img(path,dimX=None,dimY=None):
             pass
     
 #resize_image("C:\Users\USER PC\Desktop","test.jpg",200,200)
-resize_dir_img("..\Test_Data",64,64)
+if __name__=='__main__':
+    resize_dir_img("..\Train_Data\Random",64,64)

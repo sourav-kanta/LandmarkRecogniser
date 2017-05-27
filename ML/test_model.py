@@ -32,5 +32,6 @@ if __name__=='__main__':
     model=load_model('test_model.h5')
     test_img,label=get_images_in_dir("..\Test_Data");
     res=model.predict(numpy.stack(test_img))
+    numpy.set_printoptions(suppress=True)
     for i in range(len(test_img)):
         print label[i]," has a prediction of : ",res[i]
