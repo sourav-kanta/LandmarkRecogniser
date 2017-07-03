@@ -7,7 +7,9 @@ Created on Sat May 27 11:24:06 2017
 
 import numpy,os
 from scipy.misc import imread
-from keras.models import load_model
+from keras.models import model_from_json
+
+names=['Taj Mahal','Vidhan Soudha']
 
 def process_file(path):
     img=imread(path)
@@ -29,9 +31,26 @@ def get_images_in_dir(new_path):
 
 
 if __name__=='__main__':
-    model=load_model('test_model.h5')
+    json_file=open("model.json","r")
+    loaded_json=json_file.read()
+    json_file.close()
+    
+    model=model_from_json(loaded_json)
+    model.load_weights("model.h5")
     test_img,label=get_images_in_dir("..\Test_Data");
     res=model.predict(numpy.stack(test_img))
+    print res
     numpy.set_printoptions(suppress=True)
     for i in range(len(test_img)):
-        print label[i]," has a prediction of : ",res[i]
+        
+        """
+        if res[i][1]<=res[i][2]:
+            output="Vidhan Soudha"
+        else:
+            output="Taj Mahal"
+        """
+        #resb=res[i]
+        resb=res[i].tolist()
+        ind=resb.index(max(resb))
+        output=names[ind]+""
+        print label[i]," has a prediction of : ",output," with ",res[i]

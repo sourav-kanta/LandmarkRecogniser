@@ -19,4 +19,4 @@ def name_image(path,start=None):
         i=i+1
         
 if __name__=='__main__':
-    name_image("C:\Users\USER PC\Desktop\Taj_img\word\media",11)
+    name_image("..\Train_Data\Red Fort",11)

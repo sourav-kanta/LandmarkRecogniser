@@ -18,13 +18,14 @@ def resize_image(path,item,dimX=None,dimY=None):
     imResize.save(os.path.join(path,item), 'JPEG', quality=90)
     
 def resize_dir_img(path,dimX=None,dimY=None):
+    print "Resizing image";
     if not dimX:
         dimX=64
     if not dimY:
         dimY=64
     for f in os.listdir(path):
-        if not f.endswith('.jpg'):
-            continue
+        #if not f.endswith('.jpg'):
+        #    continue
         try:
             print "Resizing image : ",f
             resize_image(path,f,dimX,dimY)
@@ -34,4 +35,4 @@ def resize_dir_img(path,dimX=None,dimY=None):
     
 #resize_image("C:\Users\USER PC\Desktop","test.jpg",200,200)
 if __name__=='__main__':
-    resize_dir_img("..\Train_Data\Random",64,64)
+    resize_dir_img("..\\Test_Data",64,64)
